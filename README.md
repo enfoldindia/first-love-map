@@ -1,5 +1,7 @@
 # First Love Map of India
 
+**Recommended deployment: the WordPress plugin** in `wordpress-plugin/first-love-map/` (install steps in `wordpress-plugin/INSTALL.md`). The static site plus Google Apps Script backend described below is the fallback for when WordPress is not available.
+
 A small public map where people pin a place in India and share a short "first love" story. Stories are reviewed before they appear.
 
 ## How it works
@@ -18,6 +20,8 @@ A small public map where people pin a place in India and share a short "first lo
 | `config.js` | `APPS_SCRIPT_URL`; while empty the page shows a "not connected yet" notice |
 | `apps-script/Code.gs` | Backend, pasted into the Sheet's Apps Script editor |
 | `tests/code.test.js` | Tests for the validation and rounding functions |
+| `wordpress-plugin/first-love-map/` | WordPress plugin (recommended): private post type, REST API, shortcode, embed view, settings, CSV importer |
+| `wordpress-plugin/INSTALL.md` | Install and moderation guide for the WordPress plugin |
 | `SETUP.md` | Step-by-step setup and moderation guide for staff |
 
 ## Test
