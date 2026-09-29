@@ -147,14 +147,25 @@
   .flm-wrap .flm-main { grid-template-columns: 1fr; grid-template-rows: 52vh auto; overflow: visible; }
   .flm-wrap .flm-side { border-left: none; border-top: 1px solid var(--flm-border); }
   .flm-wrap .flm-panel { overflow-y: visible; }
+  .flm-wrap .flm-input, .flm-wrap .flm-textarea { font-size: 16px; }
 }
 
-/* Embed view: a full-page map with no theme around it. */
-html.flm-embed-html, body.flm-embed-page { margin: 0; padding: 0; height: 100%; background: #fdf6ee; }
-body.flm-embed-page .flm-wrap { border: 0; border-radius: 0; height: 100%; }
-body.flm-embed-page .flm-wrap .flm-app { height: 100vh; min-height: 480px; max-height: none; }
-@media (max-width: 680px) {
-  html.flm-embed-html, body.flm-embed-page { height: auto; }
-  body.flm-embed-page .flm-wrap { height: auto; }
-  body.flm-embed-page .flm-wrap .flm-app { height: auto; }
+/* Embed view: a full-page map with no theme around it. It always fills the iframe's height. */
+html.flm-embed-html, body.flm-embed-page { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #fdf6ee; }
+body.flm-embed-page .flm-wrap { border: 0; border-radius: 0; height: 100vh; height: 100dvh; }
+body.flm-embed-page .flm-wrap .flm-app { height: 100%; min-height: 0; max-height: none; }
+body.flm-embed-page .flm-wrap .flm-map { min-height: 0; }
+
+/* Narrow embed: title bar, then the map, then the side panel, which scrolls on its own. */
+@container (max-width: 680px) {
+  .flm-wrap.flm-embed .flm-app { height: 100%; }
+  .flm-wrap.flm-embed .flm-header { padding: 0.45rem 0.75rem; gap: 0.5rem; }
+  .flm-wrap.flm-embed .flm-title { font-size: 1rem; }
+  .flm-wrap.flm-embed .flm-header p { display: none; }
+  .flm-wrap.flm-embed .flm-count { padding: 0.2rem 0.6rem; font-size: 0.65rem; }
+  .flm-wrap.flm-embed .flm-main { grid-template-rows: minmax(0, 46fr) minmax(0, 54fr); overflow: hidden; }
+  .flm-wrap.flm-embed .flm-side { min-height: 0; overflow: hidden; }
+  .flm-wrap.flm-embed .flm-panel { flex: 1 1 0; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0.85rem; }
+  .flm-wrap.flm-embed .flm-tabs button.flm-tab { padding: 0.55rem 0.4rem; }
+  .flm-wrap.flm-embed .flm-hint { bottom: 0.6rem; }
 }

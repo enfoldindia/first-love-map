@@ -4,7 +4,7 @@ Tags: map, stories, moderation, leaflet
 Requires at least: 5.8
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,10 @@ No. To remove settings and all memories on uninstall, define `FLM_REMOVE_ALL_DAT
 Leaflet 1.9.4, BSD 2-Clause licence (see assets/leaflet/LICENSE.txt).
 
 == Changelog ==
+
+= 1.0.2 =
+* The embed view now always fills the height of its iframe. On narrow widths it stacks the title bar, map and side panel, and the panel scrolls on its own.
+* Form inputs use a 16px font on narrow widths so iOS does not zoom on focus.
 
 = 1.0.1 =
 * Fix map tiles covering only part of the map area when the embed is resized or laid out after load.
