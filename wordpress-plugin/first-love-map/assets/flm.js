@@ -249,7 +249,29 @@
     renderList();
     updateSubmit();
     loadStories();
-    setTimeout(function () { map.invalidateSize(); }, 100);
+
+    // Leaflet measures its container once and only re-measures on window resize. The container can
+    // change size without one (late CSS, lazy-loaded iframe, layout settling, becoming visible),
+    // so re-measure on every signal that the size may have changed.
+    var resizeFrame = 0;
+    function refreshSize() {
+      if (resizeFrame) return;
+      resizeFrame = requestAnimationFrame(function () {
+        resizeFrame = 0;
+        map.invalidateSize();
+      });
+    }
+    requestAnimationFrame(refreshSize);
+    setTimeout(refreshSize, 100);
+    setTimeout(refreshSize, 300);
+    window.addEventListener('load', refreshSize);
+    window.addEventListener('resize', refreshSize);
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) refreshSize();
+    });
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(refreshSize).observe(q('map'));
+    }
   }
 
   function initAll() {
