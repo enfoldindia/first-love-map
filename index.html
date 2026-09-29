@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Love Map of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="flm-app">
+    <header class="flm-header">
+      <div>
+        <h1>&#9825; First Love Map of India</h1>
+        <p>Pin the place &nbsp;·&nbsp; Share the feeling &nbsp;·&nbsp; Let India remember</p>
+      </div>
+      <div class="flm-header-right">
+        <div class="flm-count"><span id="count">0</span> memories pinned</div>
+      </div>
+    </header>
+    <div class="flm-notice" id="notice" hidden>
+      This map is not connected yet, so stories can't be shown or shared right now.
+    </div>
+    <div class="flm-main">
+      <div class="flm-map-wrap">
+        <div class="flm-map" id="map"></div>
+        <div class="flm-hint" id="hint">&#10022; Click anywhere on India to pin your memory</div>
+        <div class="flm-toast" id="toast" role="status"></div>
+      </div>
+      <div class="flm-side">
+        <div class="flm-tabs">
+          <button class="flm-tab active" id="tab-share" type="button">Share your story</button>
+          <button class="flm-tab" id="tab-read" type="button">Read stories</button>
+        </div>
+        <div class="flm-panel" id="panel-share">
+          <div class="flm-warning">
+            <strong>Please do not add any identifying information.</strong>
+            No names, school names, phone numbers, social media handles or other details that could identify you or anyone else.
+          </div>
+          <p class="flm-intro">Drop a heart on the map and tell us all about your high school love. Stories are reviewed before they appear.</p>
+          <div class="flm-pin-badge" id="pin-badge"><span style="font-size:1rem;line-height:1;flex-shrink:0">&#9825;</span><span id="pin-text">No location yet — click the map</span></div>
+          <div class="flm-field">
+            <label class="flm-label" for="story">Your story <span style="font-weight:400;font-style:italic;text-transform:none;font-size:0.6rem">(up to 5,000 characters)</span></label>
+            <textarea class="flm-textarea" id="story" maxlength="5000" placeholder="We sat in the last bench of chemistry class. She never knew I existed, but every single day felt like the most important day of my life..."></textarea>
+            <div class="flm-chars" id="chars">0 / 5,000</div>
+          </div>
+          <div class="flm-field">
+            <label class="flm-label" for="year">Approx. year</label>
+            <input type="text" class="flm-input" id="year" maxlength="20" placeholder="e.g. 2008, early 2000s...">
+          </div>
+          <div class="flm-hp" aria-hidden="true">
+            <label>Leave this empty <input type="text" id="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <p class="flm-error" id="form-error" role="alert"></p>
+          <button class="flm-submit" id="submit" type="button" disabled>&#9825; Pin this memory</button>
+        </div>
+        <div class="flm-panel" id="panel-read" hidden></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
